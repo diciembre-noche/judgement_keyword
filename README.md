@@ -1,1 +1,1 @@
-# finding keyword of the judgements
+# finding keywords of the judgements
