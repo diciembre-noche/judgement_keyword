@@ -11,21 +11,23 @@ f.close()
 law_list=content.split("\n")
 law_list.pop()
 
-x="一二三四五六七"
-y="一"
-print(y[0]==x[0])
-print(len(x))
 
 f=open("original_content.txt","r")
 content=f.read()
 f.close()
 lawstart=0
+content=content.replace(" ","")
+content=content.replace("\n","")
+content=content.replace("\r","")
 while(True):
     lawstart=content.find("法第",lawstart)
     if lawstart==-1:
         break
     law_name=look_up_law(content,lawstart,law_list)
     article=content.find("條",lawstart)
-    print(law_name+content[lawstart+3:article+3])
+    if (law_name=="目錄裡沒有的法"):
+        print("......"+content[lawstart-18:article+3])
+    else:
+        print(law_name+content[lawstart+3:article+3])
     lawstart=article
     
